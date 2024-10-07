@@ -323,23 +323,33 @@
 
 %% Meta Info
 \def\@artid{xx}
+\def\@jpub{xxx}
 \def\@jname{xxx xxx}
 \def\@jvol{xx}
 \def\@jissue{xx}
 \def\@jyear{{0000}}
 \def\@jmonth{xx}
+\def\@pissn{}
+\def\@eissn{}
 \def\@DOI{}
 \def\@logourl{}
 %
 \def\artid#1{\gdef\@artid{#1}}
+\def\jpub#1{\markboth{\textit{#1}}{\textit{#1}}
+\gdef\@jpub{#1}}
 \def\jname#1{\markboth{\textit{#1}}{\textit{#1}}\gdef\@jname{#1}}
 \def\jvol#1{\gdef\@jvol{#1}}
 \def\jissue#1{\gdef\@jissue{#1}}
 \def\jyear#1{\gdef\@jyear{#1}}
 \def\jmonth#1{\gdef\@jmonth{#1}}
-\def\jdoi#1{\gdef\@DOI{doi:#1}\gdef\@logourl{#1}}
-% \jdoi{10.4153/xxxx}
-\jname{Data/Math}%
+\def\pissn#1{\gdef\@pissn{Print ISSN: #1}}
+\def\eissn#1{\gdef\@eissn{Online ISSN: #1}}
+\def\jdoi#1{\gdef\@DOI{DOI: #1}
+%\gdef\@logourl{#1}
+}
+% \jdoi{00.0000/xxxx}
+%\jpub{IICT-BAS}
+%\jname{CIT}
 %
 
 %%% Font Def
@@ -357,8 +367,8 @@
 %\def\title#1{\gdef\@title{#1}}
 
 \renewcommand{\title}[2][]{%
-\gdef\@checktitle{#1}\ifx\@checktitle\empty\gdef\@title{#2}
-\gdef\s@title{#2}\else\gdef\@title{#2}\gdef\s@title{#1}\fi}
+\gdef\@checktitle{#1}\ifx\@checktitle\empty\gdef\@title{\vspace{3cm}#2}
+\gdef\s@title{\vspace{3cm}#2}\else\gdef\@title{\vspace{3cm}#2}\gdef\s@title{\vspace{3cm}#1}\fi}
 
 %% Cross Link for Author & Address
 \def\jmkLabel#1{\@bsphack\protected@write\@auxout{}{\string\Newlabel{#1}{\@currentlabel}}\@esphack}
@@ -604,13 +614,19 @@ properly cited.
 }%
 
 \AtEndDocument{\label{LastPage}}
-\def\@opjournalheader{\textit{\@jname}\space\ {{(\@jyear),\ \textbf{\@jvol}:\@artid}} {\thepage{--}\pageref*{LastPage}}\\
-{\@DOI}}%
+\def\@opjournalheader{\@jpub\\ \noindent\rule{2cm}{0.4pt}
+\\ \@jname\space\ • {{Volume \textbf{\@jvol}, No. {\@jissue}}}
+%{\thepage{--}\pageref*{LastPage}}
+\\
+Sofia • {\@jyear} \hspace{7cm} {\@pissn}; {\@eissn}
+\\
+\hspace{11cm}{\@DOI}}%
 
 %% Opening Page Style      
 \def\ps@titlepage{%
      \def\@oddhead{{\hbox to \textwidth{%
-      \vbox to 0pt{\vskip-5pt\rlap{\hbox to \textwidth{\hfill\includegraphics[scale=.75]{CUP_Logo}
+      \vbox to 0pt{\vskip-35pt\rlap{\hbox to \textwidth{\hfill
+    %  \includegraphics[scale=.1]{BAS-Logo}
     %   \quad\includegraphics{DataMath_Logo}
       \hspace*{-1pt}}}}%
       \vbox to 0pt{\vskip-7pt\rlap{\parbox{\textwidth}{\opheaderfont\begin{tabular*}{\textwidth}[b]{@{\extracolsep{\fill}}@{}l@{}}%
@@ -620,6 +636,7 @@ properly cited.
      \let\@evenhead\@oddhead%
     %  \def\@oddfoot{\vbox to 0pt{\vskip-\opshortpage{\printcopyright{\@copyrighttext}}}}%%
      \let\@evenfoot\@oddfoot}%
+
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sections %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
