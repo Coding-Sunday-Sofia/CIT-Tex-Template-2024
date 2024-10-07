@@ -1,0 +1,17 @@
+CUP Data Template 	Official
+
+Author			Cambridge University Press and Overleaf
+License			Creative Commons CC BY 4.0
+Abstract		This is the template for submission to the following journals:
+			Wearable Technologies
+			Data and Policy
+			Data-centric Engineering
+			Environmental Data Science
+			Forum of Mathematics, Pi
+			Forum of Mathematics, Sigma
+			Flow
+			Judgment and Decision Making
+			Programmable Materials
+			Glasgow Mathematical Journal
+			Psychometrika
+			Journal of Nonlinear Waves
